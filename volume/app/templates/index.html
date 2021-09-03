@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Stargazer - Andrew L. Samaha</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="static/index.css">
+        <link type="text/css" rel="stylesheet"
+            href="{{ url_for('static',filename='index.css')}}" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        
+        <meta name="description" content="A Machine-Learning Based Real-Estate Market Visualization and Prediction Tool">
+        <style>
+        body {
+            /*background-image: url("{{ url_for('static',filename='stars.jpg')}}"); */
+            background-color: #cccccc;
+            }
+        rect {
+            stroke: #fff;
+            stroke-width: .1px;
+        }
+        </style>
+        <script>
+            let dataset = {};
+            let dataset_byindex = [];
+            let current_date = "2001.05.20";
+            let start_date = "";
+            let end_date = "";
+            let request_buffer = [];
+
+            let get_data = function() {
+                $.getJSON('/get',{
+                    date: current_date  
+                }, got_data);
+            }
+            let get_daterange = function() {
+                $.getJSON('/get',{daterange:1}, got_daterange);
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id='currentdate'></div>
+        <div id='sky'>
+            
+        </div>
+        <div id='hoverinfo_parent'>
+            <div id='hoverinfo'>
+                <table>
+                    
+                    <tr>    <td ID="index" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">index</td>                              </tr>
+                    <tr>    <td id="NBHC_x" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Neighborhood Code</td>                </tr>
+                    <tr>    <td id="STR" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Section/Township/Range</td>              </td>
+                    <tr>    <td ID="tUNITS" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Number of Units</td>                  </tr>
+                    <tr>    <td ID="tBLDGS" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Number of Buildings</td>              </tr>
+                    
+                    <tr>    <td id="tBEDS" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Bedrooms</td>                          </tr>
+                    <tr>    <td id="tBATHS" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Bathrooms</td>                        </tr>
+                    <tr>    <td id="tSTORIES" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Stories</td>                        </tr>
+
+                    <tr><td></td><td></td></tr>
+                    <tr>    <td ID="HEAT_AR" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Total Heated Square Feet</td>        </tr>
+                    <tr>    <td ID="ACREAGE" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Acreage</td>                         </tr>
+                    <tr>    <td ID="ACT" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Year Built</td>                        </tr>
+                    <tr>    <td ID="EFF" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Year Used to Calculate Depreciation</td> </tr>
+                    <tr>    <td ID="BASE" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Year of Homestead</td>                  </tr>
+                    
+                    <tr class='reasoncode'><td colspan=3>Reason Code:</td>                                                         </tr>
+                    <tr class='reasoncode'><td id="REA_CD" colspan=3></td>                                                         </tr>
+                </table>
+            </div>
+        </div>
+        <script src="{{ url_for('static',filename='main.js')}}"></script>
+    </body>
+</html>

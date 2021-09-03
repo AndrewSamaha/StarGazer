@@ -1,0 +1,48 @@
+# syntax=docker/dockerfile:1
+
+FROM tensorflow/tensorflow:latest-jupyter as tensor
+
+#docker run -v $(realpath ~):/tf/notebooks -p 9999:8888 tensorflow/tensorflow:latest-jupyter'
+#:2.6.0rc0-gpu
+#
+
+LABEL Author=andrew.samaha@gmail.com
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY ./ /app
+COPY ./requirements.txt /tmp/
+
+#ADD ./db_backups/racerdump.2021.07.12.sql /tmp/racer.sql
+
+# install Python 3
+RUN apt-get update && apt-get -y upgrade && \
+    pip install --trusted-host https://pypi.python.org/pypi/ -r /tmp/requirements.txt 
+    
+    #python3 -m pip install --upgrade pip && \
+    #This line causes some problems, 'This is taking longer than usual'
+    
+    #&& \
+    #RUN mamba install --quiet --yes 'tensorflow' && \
+    #mamba clean --all -f -y && \
+    #fix-permissions "${CONDA_DIR}" && \
+    #fix-permissions "/home/${NB_USER}"
+    #&& \
+    #groupadd --gid 5000 tfuser && \
+    #useradd --home-dir /home/tfuser --create-home --uid 5000 \
+    #--gid 5000 --shell /bin/sh --skel /dev/null tfuser
+
+#python pip install --trusted-host https://pypi.python.org/pypi/ -r /tmp/requirements.txt
+
+#EXPOSE 80
+EXPOSE 8888
+
+#USER tfuser
+
+
+#USER tfuser
+
+#CMD ["jupyter","notebook"]
+CMD ["jupyter","notebook","--allow-root"]

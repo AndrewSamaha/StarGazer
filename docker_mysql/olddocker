@@ -1,0 +1,16 @@
+# syntax=docker/dockerfile:1
+
+FROM mysql:8.0.26 as db
+
+#docker run -v $(realpath ~):/tf/notebooks -p 9999:8888 tensorflow/tensorflow:latest-jupyter'
+#:2.6.0rc0-gpu
+#
+
+LABEL Author=andrew.samaha@gmail.com
+
+#ADD ./db_backups/racerdump.2021.07.12.sql /tmp/racer.sql
+
+EXPOSE 3306
+
+RUN ls -la /var/lib/mysql \
+    && /etc/init.d/mysql start

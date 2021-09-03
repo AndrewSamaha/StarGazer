@@ -1,0 +1,8 @@
+zillow api - free, no cachine allowed, 
+yahoo real estate
+housevalues.com
+county property values, search terms: look up a property, property taxes, or property search
+    hillsborough county tax records
+    https://hillsborough.county-taxes.com/public/search/property_tax?action_location=Landing+Page
+    https://hillsborough.county-taxes.com/public
+    hillsborough county tax rate - 0.98%
