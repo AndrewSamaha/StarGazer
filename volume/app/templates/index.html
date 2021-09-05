@@ -25,13 +25,28 @@
             let current_date = "2001.05.20";
             let start_date = "";
             let end_date = "";
+            let all_dates_to_get = [];
+            let last_received_date
             let request_buffer = [];
+            let fetch_size = 1;
+            let request_index = -1;
+            let rows_received = 0;
 
             let get_data = function() {
                 $.getJSON('/get',{
                     date: current_date  
                 }, got_data);
             }
+
+            let get_date = function(date) {
+                if (typeof date == 'undefined') return;
+                date = date.replace("-","."); // app.py expects dates like 2005.01.05
+                date = date.replace("-","."); // app.py expects dates like 2005.01.05
+                $.getJSON('/get',{
+                    date: date
+                }, got_data);
+            }
+            
             let get_daterange = function() {
                 $.getJSON('/get',{daterange:1}, got_daterange);
             }
@@ -47,7 +62,11 @@
             <div id='hoverinfo'>
                 <table>
                     
-                    <tr>    <td ID="index" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">index</td>                              </tr>
+                    <tr>    <td ID="startdate" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Start Date</td>                              </tr>
+                    <tr>    <td ID="enddate" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">End Date</td>                              </tr>
+                    <tr>    <td ID="rows_received" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Rows Received</td>                              </tr>
+                    <tr><td></td><td></td></tr>
+                    <tr>    <td ID="index" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Index</td>                              </tr>
                     <tr>    <td id="NBHC_x" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Neighborhood Code</td>                </tr>
                     <tr>    <td id="STR" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Section/Township/Range</td>              </td>
                     <tr>    <td ID="tUNITS" class='dataval'></td> <td class='datacenter'></td> <td id="datalabel">Number of Units</td>                  </tr>
@@ -69,6 +88,7 @@
                 </table>
             </div>
         </div>
+        <script src="{{ url_for('static',filename='helper.js')}}"></script>
         <script src="{{ url_for('static',filename='main.js')}}"></script>
     </body>
 </html>

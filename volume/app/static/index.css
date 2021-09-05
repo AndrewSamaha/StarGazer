@@ -4,12 +4,13 @@ body {
 #sky {
     position: fixed;
     background-color: #362569;
+    cursor: crosshair;
 }
 #hoverinfo_parent {
     position: fixed;
     background-color: bisque;
     color:black;
-    height: 621px;
+    height: 611.42px;
     width: 500px;
 }
 #hoverinfo {
@@ -40,8 +41,11 @@ body {
     background: #052bff;
     width:10;
     height:10;
+    border-radius: 5px;
 }
-
+.cell:hover {
+    background: yellow;
+}
 .border {
     position: absolute;
     background:black;
