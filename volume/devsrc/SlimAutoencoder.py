@@ -63,6 +63,15 @@ class SlimAutoencoderBuilder():
         self.df = self.scaler.transform(self.df)
         return self.df
 
+    def clearZipCodes(self, df, columnname):
+        # convert STR to an X and Y, S=section, Township, Range
+        df = df.copy()
+        df[columnname] = df[columnname].str.replace('-+[0-9]*','',regex=True).str.replace('_+','',regex=True)
+        df = df[df[columnname].notna()]
+        df = df[df[columnname] != '']
+        df = df[df[columnname] != '99999']
+        return df
+
     def one_hot_encode(self, df,cols):
         df = df.copy()
         original_columns = df.columns
