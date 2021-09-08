@@ -8,8 +8,9 @@
 
 ## Code
 ### Notebooks
+* **/devsrc/test-DataWrangler.ipynb** - Created '../Datasets/residential_conveyances_jan2000_and_up_ohe.pickle'
 * **/devsrc/dfwindowmaker.ipynb** - Created windowed dataset
-
+* **/devsrc/foreclosure-predictor.ipynb** - Creates ../Datasets/residential_conveyances_jan2000_and_up.pickle
 ### Helper Functions
 * **/devsrc/db.py** - Contains basic db functions used in the flask app and jupyter notebooks.
 
