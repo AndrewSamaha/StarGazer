@@ -16,7 +16,8 @@ def dfQuery(query):
         host="db",
         port=3306,
         user="root",
-        password="datascience")
+        password="datascience",
+        db="stargazer")
     cur = cnx.cursor()
 
     # Execute a query
@@ -33,11 +34,11 @@ def dfQuery(query):
 def getSalesOnDate(date):
     date = date.split(".")
     date = "-".join(date)
-    return dfQuery(f"select * from stargazer.hills_encoded where Date='{date}';").to_json(orient='records')
+    return dfQuery(f"select * from stargazer.hills_encoded2 where Date='{date}';").to_json(orient='records')
 
 def getDateRange():
-    start = dfQuery(f"select distinct Date from stargazer.hills_encoded order by Date ASC limit 1;")
-    end = dfQuery(f"select distinct Date from stargazer.hills_encoded order by Date DESC limit 1;")
+    start = dfQuery(f"select distinct Date from stargazer.hills_encoded2 order by Date ASC limit 1;")
+    end = dfQuery(f"select distinct Date from stargazer.hills_encoded2 order by Date DESC limit 1;")
     start = start.values[0][0]
     end = end.values[0][0]
     return start,end

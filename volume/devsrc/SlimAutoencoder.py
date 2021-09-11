@@ -2,8 +2,9 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.model_selection import train_test_split
 
-powers = [4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 4, 2]
+powers = [4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 4, 3]
 powers = [256, 128, 64, 8, 2]
 
 def getSmaller(val):
@@ -12,7 +13,7 @@ def getSmaller(val):
             return num
 
 def getBigger(val):
-    powers = [4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 4, 2]
+    powers = [4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 4, 3]
     powers = [256, 128, 64, 8, 2]
     powers = sorted(powers)
     for num in powers:
@@ -44,6 +45,7 @@ class SlimAutoencoderBuilder():
         df = df.sort_values('S_DATE_x', ascending=True)
         df = df[757_000:] # late january 2000
         self.df_original = df
+
         
         self.dates = df['S_DATE_x']
         
@@ -58,9 +60,14 @@ class SlimAutoencoderBuilder():
 
         self.df, self.ohe_sizes, self.original_columns = self.one_hot_encode(df, self.columns_to_onehotencode)
         self.df_prepared = self.df.copy()
+        self.df_prepared, self.df_test = train_test_split(self.df_prepared, random_state=42, test_size=.1)
         self.scaler = MinMaxScaler()
         self.scaler.fit(self.df)
         self.df = self.scaler.transform(self.df)
+
+        self.test_scaler = MinMaxScaler()
+        self.test_scaler.fit(self.df_test)
+        self.df_test_scaled = self.test_scaler.transform(self.df_test)
         return self.df
 
     def one_hot_encode(self, df,cols):

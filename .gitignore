@@ -3,3 +3,5 @@
 /volume/devsrc/*.avi
 /volume/home
 /volume/img/*
+/volume/devsrc/.ipynb_checkpoints
+/volume/devsrc/__pycache__
