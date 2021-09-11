@@ -3,7 +3,7 @@
 Real-estate markets consist of goods that are feature rich and complex that make large-scale comparisons and understanding difficult. Some of the features are easy to compare (e.g., 2 bedroom vs. 3), but others are categorical (e.g., neighborhood, house vs. condo). Most vexing of all is aligning combinations of features. Figure 1 and Figure 2 show a list of features found in conveyances and parcel data published by Hillsborough County. There are over 60 and consist of mixed types (continuous, numeric & monotonic, discrete, and categorical).
 | Figure 1  | Figure 2  |
 |---|---|
-| <img src=img/fields1.png width=100px caption='Figure 1'>  |  <img src=img/fields2.png width=100px caption='Figure 2'> |
+| <img src=img/fields1.png width=200px caption='Figure 1'>  |  <img src=img/fields2.png width=200px caption='Figure 2'> |
 
 
 ## Autoencoders and Dimensionality Reduction
@@ -17,7 +17,7 @@ Through training, the network learns to output data that corresponds to the inpu
 Below is another example of this architecture for a 3-layer autoencoder published by Ayinde & Zurada (2017).
 | Figure 3, from Ayinde & Zurada (2017) |
 |---|
-| <img src=img/ayinde.zurada.figure2.png width=200px >  | 
+| <img src=img/ayinde.zurada.figure2.png width=300px >  | 
 
 Although autoencoders can learn essential representations, they remain domain specific. That is, an autoencoder trained to encode and decode images of faces would not perform well on financial datasets.
 
@@ -32,7 +32,7 @@ Data were retrieved from a public-facing FTP site maintained by Hillsborough Cou
 Early experiments trying to cram all of these features into a single autoencoder failed during training with negative or ever-increasing loss functions. I suspected that the mix of categorical (one-hot encoded) and monotonic features made training especially difficult. So, I settled on a two-stage architecture where those one-hot encoded columns were fed into their own autoencoder, and the activation at their hidden layers were concatenated with the original monotic features and fed as input into a second stage (See Figure 4, below).
 | Figure 4. Two-Stage<br>Architecture |  2nd Stage Hidden<br>Layer Activation |
 |---|---|
-| <img src=img/poc-architecture.png width=200px >  |  <img src=img/out-15fps.gif width=200px >  |
+| <img src=img/poc-architecture.png width=300px >  |  <img src=img/out-15fps.gif width=300px >  |
 
 ### Hyperparameters
 
