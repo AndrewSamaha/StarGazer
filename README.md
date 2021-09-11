@@ -35,12 +35,12 @@ Early experiments trying to cram all of these features into a single autoencoder
 | <img src=img/poc-architecture.png width=300px >  |  <img src=img/out-15fps.gif width=300px >  |
 
 ### Hyperparameters
-#### Layers
-| Figure 5. Layers |
-|---|
-| <img src=img/autoencoder.png width=200px >  |
-| <img src=img/encoder.png width=200px >  |
-| <img src=img/decoder.png width=200px >  |
+#### Model Shape
+| Figure 5. Model | Diagram |
+|---|---|
+| Autoencoder | <img src=img/autoencoder.png width=200px >  |
+| Encoder | <img src=img/encoder.png width=200px >  |
+| Decoder | <img src=img/decoder.png width=200px >  |
 
 
 
