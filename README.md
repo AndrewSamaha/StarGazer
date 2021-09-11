@@ -22,9 +22,10 @@ Below is another example of this architecture for a 3-layer autoencoder publishe
 Although autoencoders can learn essential representations, they remain domain specific. That is, an autoencoder trained to encode and decode images of faces would not perform well on financial datasets.
 
 ## Purpose
-The goal of this project was to train autoencoders using conveyance data in order to build condensed, 2-dimensional, representations of conveyances.
+The goal of this project was to train autoencoders using conveyance data in order to build condensed, 2-dimensional, representation. Such a representation might aid in comparison and similarity.
 
-
+### Data
+Data were retrieved from a public-facing FTP site maintained by Hillsborough County. The database contained over 2 million records from 1901 to 2021, but was truncated from 2000 to 2021, resulting in 1.3 million records with 64 dimensions, 11 of which were numeric and monotonic (where higher numbers mean more of a thing, e.g., bedrooms, acreage, etc), and the remaining 53 were categorical.
 
 ## References
 Ayinde, B. O., & Zurada, J. M. (2017). Deep learning of constrained autoencoders for enhanced understanding of data. *IEEE transactions on neural networks and learning systems, 29(9)*, 3969-3979. Retrieved from https://par.nsf.gov/servlets/purl/10079214
