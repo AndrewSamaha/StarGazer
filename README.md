@@ -29,7 +29,7 @@ Data were retrieved from a public-facing FTP site maintained by Hillsborough Cou
 
 ### Architecture
 Early experiments trying to cram all of these features into a single autoencoder failed during training with negative or ever-increasing loss functions. I suspected that the mix of categorical (one-hot encoded) and monotonic features made training especially difficult. So, I settled on a two-stage architecture where those one-hot encoded columns were fed into their own autoencoder, and the activation at their hidden layers were concatenated with the original monotic features and fed as input into a second stage (See Figure 4, below).
-| Figure 4. Two-Stage Architecture |  Hidden Layer Activation |
+| Figure 4. Two-Stage Architecture |  2nd Stage Hidden Layer Activation |
 |---|---|
 | <img src=img/poc-architecture.png width=200px >  |  <img src=img/out-15fps.gif width=200px >  |
 
