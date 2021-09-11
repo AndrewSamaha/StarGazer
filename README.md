@@ -8,7 +8,7 @@ Real-estate markets consist of goods that are feature rich and complex that make
 
 
 
-### Autoencoders and Dimensionality Reduction
+## Autoencoders and Dimensionality Reduction
 Autoencoders are subtype of neural network consisting of a minimum of three layers where the middle (hidden) layer is smaller than the input and output layers, e.g.:
 1. An input layer: n=50
 2. A hidden layer: n=2
@@ -16,7 +16,7 @@ Autoencoders are subtype of neural network consisting of a minimum of three laye
 
 Through training, the network learns to output data that corresponds to the input layer, but importantly it learns a parameter constrained representation of the original features. In this way, autoencoders are often said to 'compress' data.
 
-Below is 
+Below is another example of this architecture for a 3-layer autoencoder published by Ayinde & Zurada (2017).
 | Figure 3, from Figure 2 of Ayinde & Zurada (2017) |
 |---|
 | <img src=img/ayinde.zurada.figure2.png width=200px >  | 
