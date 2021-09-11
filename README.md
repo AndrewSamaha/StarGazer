@@ -6,8 +6,6 @@ Real-estate markets consist of goods that are feature rich and complex that make
 | <img src=img/fields1.png width=100px caption='Figure 1'>  |  <img src=img/fields2.png width=100px caption='Figure 2'> |
 
 
-
-
 ## Autoencoders and Dimensionality Reduction
 Autoencoders are subtype of neural network consisting of a minimum of three layers where the middle (hidden) layer is smaller than the input and output layers, e.g.:
 1. An input layer: n=50
@@ -20,6 +18,13 @@ Below is another example of this architecture for a 3-layer autoencoder publishe
 | Figure 3, from Figure 2 of Ayinde & Zurada (2017) |
 |---|
 | <img src=img/ayinde.zurada.figure2.png width=200px >  | 
+
+Although autoencoders can learn essential representations, they remain domain specific. That is, an autoencoder trained to encode and decode images of faces would not perform well on financial datasets.
+
+## Purpose
+The goal of this project was to train autoencoders using conveyance data in order to build condensed, 2-dimensional, representations of conveyances.
+
+
 
 ## References
 Ayinde, B. O., & Zurada, J. M. (2017). Deep learning of constrained autoencoders for enhanced understanding of data. *IEEE transactions on neural networks and learning systems, 29(9)*, 3969-3979. Retrieved from https://par.nsf.gov/servlets/purl/10079214
