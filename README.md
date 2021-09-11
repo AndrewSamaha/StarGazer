@@ -35,6 +35,19 @@ Early experiments trying to cram all of these features into a single autoencoder
 | <img src=img/poc-architecture.png width=300px >  |  <img src=img/out-15fps.gif width=300px >  |
 
 ### Hyperparameters
+#### Layers
+| Figure 5. Layers |
+|---|
+| <img src=img/autoencoder.png width=200px >  |
+| <img src=img/encoder.png width=200px >  |
+| <img src=img/decoder.png width=200px >  |
+
+
+
+## Results
+
+### Next Steps
+
 
 ## References
 Ayinde, B. O., & Zurada, J. M. (2017). Deep learning of constrained autoencoders for enhanced understanding of data. *IEEE transactions on neural networks and learning systems, 29(9)*, 3969-3979. Retrieved from https://par.nsf.gov/servlets/purl/10079214
