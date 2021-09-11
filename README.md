@@ -21,17 +21,20 @@ Below is another example of this architecture for a 3-layer autoencoder publishe
 
 Although autoencoders can learn essential representations, they remain domain specific. That is, an autoencoder trained to encode and decode images of faces would not perform well on financial datasets.
 
-## Purpose
+### Purpose
 The goal of this project was to train autoencoders using conveyance data in order to build condensed, 2-dimensional, representation. Such a representation might aid in comparison and similarity.
 
+## Methods
 ### Data
 Data were retrieved from a public-facing FTP site maintained by Hillsborough County. The database contained over 2 million records from 1901 to 2021, but was truncated from 2000 to 2021, resulting in 1.3 million records with 64 dimensions, 11 of which were numeric and monotonic (where higher numbers mean more of a thing, e.g., bedrooms, acreage, etc), and the remaining 53 were categorical.
 
 ### Architecture
 Early experiments trying to cram all of these features into a single autoencoder failed during training with negative or ever-increasing loss functions. I suspected that the mix of categorical (one-hot encoded) and monotonic features made training especially difficult. So, I settled on a two-stage architecture where those one-hot encoded columns were fed into their own autoencoder, and the activation at their hidden layers were concatenated with the original monotic features and fed as input into a second stage (See Figure 4, below).
-| Figure 4. Two-Stage Architecture |  2nd Stage Hidden Layer Activation |
+| Figure 4. Two-Stage<br>Architecture |  2nd Stage Hidden<br>Layer Activation |
 |---|---|
 | <img src=img/poc-architecture.png width=200px >  |  <img src=img/out-15fps.gif width=200px >  |
+
+### Hyperparameters
 
 ## References
 Ayinde, B. O., & Zurada, J. M. (2017). Deep learning of constrained autoencoders for enhanced understanding of data. *IEEE transactions on neural networks and learning systems, 29(9)*, 3969-3979. Retrieved from https://par.nsf.gov/servlets/purl/10079214
