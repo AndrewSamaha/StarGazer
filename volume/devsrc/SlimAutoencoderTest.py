@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.model_selection import train_test_split
 
 powers = [4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 4, 3]
-powers = [256, 128, 64, 8, 2]
+powers = [256, 128, 64, 8, 5, 2]
 
 def getSmaller(val):
     for num in powers:
@@ -14,7 +14,7 @@ def getSmaller(val):
 
 def getBigger(val):
     powers = [4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 4, 3]
-    powers = [256, 128, 64, 8, 2]
+    powers = [256, 128, 64, 8, 5, 2]
     powers = sorted(powers)
     for num in powers:
         if num > val:
@@ -107,9 +107,11 @@ class SlimAutoencoderBuilder():
 
         layer_sizes = getDescendingLayerSizes(shape[1])
         layernum = 1
-        for layer_size in layer_sizes:
+        for i,layer_size in enumerate(layer_sizes):
             if layernum == 1:
                 x = tf.keras.layers.Dense(layer_size, activation='relu')(self.encoder_input_layer)
+            elif i == len(layer_sizes) - 1:
+                x = tf.keras.layers.Dense(layer_size, activation='sigmoid')(x)
             else:
                 x = tf.keras.layers.Dense(layer_size, activation='relu')(x)
             layernum += 1    
