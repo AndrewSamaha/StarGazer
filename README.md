@@ -52,7 +52,7 @@ Starting with a dataset of 1.3 million rows, 10% were removed for a holdout and 
 The model reached asymptotic performance after 72 epochs
 | Figure 6. Training Results |
 |---|
-| <img src=img/poc-architecture.png width=300px > |
+| <img src=img/trainingresults.png width=300px > |
 
 Mean-squared error on the training and validation sets were 0.0078 and 0.0073, respecitvely. Performance on the holdout set (also MSE) was 0.0080.
 
