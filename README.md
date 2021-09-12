@@ -35,16 +35,26 @@ Early experiments trying to cram all of these features into a single autoencoder
 | <img src=img/poc-architecture.png width=300px >  |  <img src=img/out-15fps.gif width=300px >  |
 
 ### Hyperparameters
-#### Model Shape
-| Figure 5. Model | Diagram |
-|---|---|
-| Autoencoder | <img src=img/autoencoder.png width=200px >  |
-| Encoder | <img src=img/encoder.png width=200px >  |
-| Decoder | <img src=img/decoder.png width=200px >  |
+#### Stage 2 Model Shape
+| Figure 5. Model | Total Parameters | Diagram |
+|---|---|---|
+| Autoencoder | 294 | <img src=img/autoencoder.png width=200px >  |
+| Encoder | 138  | <img src=img/encoder.png width=200px >  |
+| Decoder | 156  | <img src=img/decoder.png width=200px >  |
+
+Rectilinear activation functions were used in each layer with the exception the last, which used linear activation functions. Mean-squared error was used as the loss function.
 
 
+### Training
+Starting with a dataset of 1.3 million rows, 10% were removed for a holdout and set aside. The remaining rows were standardized between 0 and 1 using MinMaxScaler. A version of stochastic gradient descent, Adam, was used to train the model's weights using a learning rate of 1e-5 and a batch size of 128. In addition, the learning rate was reduced following 3 epochs at the same loss using Keras's ReduceLROnPlateau callback. Finally, the model was trained for 100 epochs or following at least 8 successive epochs with no reduction in loss. 
 
 ## Results
+The model reached asymptotic performance after 72 epochs
+| Figure 6. Training Results |
+|---|
+| <img src=img/poc-architecture.png width=300px > |
+
+Mean-squared error on the training and validation sets were 0.0078 and 0.0073, respecitvely. Performance on the holdout set (also MSE) was 0.0080.
 
 ### Next Steps
 
