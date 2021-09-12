@@ -46,7 +46,7 @@ Rectilinear activation functions were used in each layer with the exception the 
 
 
 ### Training
-Starting with a dataset of 1.3 million rows, 10% were removed for a holdout and set aside. The remaining rows were standardized between 0 and 1 using MinMaxScaler. A version of stochastic gradient descent, Adam, was used to train the model's weights using a learning rate of 1e-5 and a batch size of 128. In addition, the learning rate was reduced following 3 epochs at the same loss using Keras's ReduceLROnPlateau callback. Finally, the model was trained for 100 epochs or following at least 8 successive epochs with no reduction in loss. 
+Starting with a dataset of 1.3 million rows, 10% were removed for a holdout and set aside. The remaining rows were standardized between 0 and 1 using MinMaxScaler. A version of stochastic gradient descent, Adam, was used to train the model's weights using a learning rate of 1e-5 and a batch size of 128. The learning rate was chosen following In addition, the learning rate was reduced following 3 epochs at the same loss using Keras's ReduceLROnPlateau callback. Finally, the model was trained for 100 epochs or following at least 8 successive epochs with no reduction in loss. 
 
 ## Results
 The model reached asymptotic performance after 72 epochs
@@ -57,7 +57,7 @@ The model reached asymptotic performance after 72 epochs
 Mean-squared error on the training and validation sets were 0.0078 and 0.0073, respecitvely. Performance on the holdout set (also MSE) was 0.0080.
 
 ### Next Steps
-
+The next steps are to explore the activations in the hidden layer and observe the groupings created.
 
 ## References
 Ayinde, B. O., & Zurada, J. M. (2017). Deep learning of constrained autoencoders for enhanced understanding of data. *IEEE transactions on neural networks and learning systems, 29(9)*, 3969-3979. Retrieved from https://par.nsf.gov/servlets/purl/10079214
